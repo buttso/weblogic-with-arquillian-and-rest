@@ -1,5 +1,4 @@
 ### Java Gunk
-
 *.class
 
 # Package Files #
@@ -11,7 +10,6 @@
 hs_err_pid*
 
 ### Maven Gunk
-
 target/
 pom.xml.tag
 pom.xml.releaseBackup
@@ -19,3 +17,5 @@ pom.xml.versionsBackup
 pom.xml.next
 release.properties
 
+### NetBeans Gunk
+nb-configuration.xml
