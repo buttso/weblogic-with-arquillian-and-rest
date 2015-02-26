@@ -3,16 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-app.controller("AccountController", function ($scope, $http) {
+app.controller("AccountController", function ($scope, $http, $location) {
     $scope.name = "Jack";
     $scope.balance = 0;
     $scope.accountExists = false;
     $scope.firstPage = true;
     $scope.transaction = 0;
+    $scope.base_url=$location.absUrl().substring(0,$location.absUrl().lastIndexOf("/"));
 
     $scope.checkAccountExists = function () {
         $scope.firstPage = false;
-        $http.get("http://localhost:7001/webapp/rest/account/" + $scope.name)
+        $http.get($scope.base_url + "/rest/account/" + $scope.name)
                 .success(function (response, status) {
                     $scope.accountExists = true;
                     $scope.balance = response;
@@ -24,7 +25,7 @@ app.controller("AccountController", function ($scope, $http) {
 
     $scope.createAccount = function () {
         //alert('create ' + $scope.name + ' ' + $sceop.transaction);
-        $http.post("http://localhost:7001/webapp/rest/account/create/" + $scope.name, "amount=" + $scope.transaction)
+        $http.post($scope.base_url + "/rest/account/create/" + $scope.name, "amount=" + $scope.transaction)        
                 .success(function (response, status) {
                     //alert(response + " " + status);
                     $scope.message = "[ create " + $scope.name + " " + $scope.transaction + " ]";
@@ -41,7 +42,7 @@ app.controller("AccountController", function ($scope, $http) {
 
     $scope.depositAccount = function () {
         //alert('deposit: $' + $scope.transaction);
-        $http.post("http://localhost:7001/webapp/rest/account/deposit/" + $scope.name, "amount=" + $scope.transaction)
+        $http.post($scope.base_url + "/rest/account/deposit/" + $scope.name, "amount=" + $scope.transaction)
                 .success(function (response, status) {
                     //alert(response + " " + status);
                     $scope.message = "[ deposit " + $scope.transaction + " ]";
@@ -55,7 +56,7 @@ app.controller("AccountController", function ($scope, $http) {
 
     $scope.withdrawAccount = function () {
         //alert('withdraw: $' + $scope.transaction);
-        $http.post("http://localhost:7001/webapp/rest/account/withdraw/" + $scope.name, "amount=" + $scope.transaction)
+        $http.post($scope.base_url + "/rest/account/withdraw/" + $scope.name, "amount=" + $scope.transaction)
                 .success(function (response, status) {
                     //alert(response + " " + status);
                     $scope.message = "[ withdraw " + $scope.transaction + " ]";
