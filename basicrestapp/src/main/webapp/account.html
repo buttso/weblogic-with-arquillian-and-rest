@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="description" content="Oracle WebLogic Server" />
+        <meta name="keywords" content="Oracle WebLogic Server" />
+        <title>Angular Resty Bank</title>
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
+        <script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+        <script src="js/AngRestBank.js"></script>
+        <script src="js/AccountController.js"></script>
+    </head>
+    <body>
+        <div class="container" ng-app="AngRestBank">
+            <div class="row-fluid">
+                <!-- header -->
+            </div>
+
+            <div class="row-fluid">
+                <!-- body -->
+                <h2>Welcome to the Angular Resty Bank</h2>
+                <p class="lead">This project shows a basic example of using REST and Angular JS to simulate some functionality of a bank system</p>
+
+                <!-- Angulars Away -->
+                <div class="well" ng-controller="AccountController">
+
+                    <!-- FIRST PAGE -->
+                    <div id="firstPage" class="form" ng-show="firstPage">
+                        <legend>Enter your name to get started</legend>
+                        <label>Name</label>
+                        <input type="text" ng-model="name">
+                        <div class="form-actions">                        
+                            <span><input type="button" value="Go" class="btn btn-success" ng-click="checkAccountExists()" /></span>                      
+                        </div>
+                    </div>
+
+                    <!-- CREATE PAGE -->
+                    <div id="create" class="form" ng-show="!firstPage && !accountExists">
+                        <legend>Create Account</legend>
+                        <label>Name</label>
+                        <input type="text" ng-model="name">
+                        <label>Initial Balance</label>
+                        <input type="text" ng-model="balance">
+                        <div class="form-actions">                        
+                            <span><input type="button" value="Create" ng-click="createAccount()" class="btn btn-success"/></span>
+                            <span><input type="button" value="Exit" ng-click="exitAccount()()" class="btn btn-primary"/></span>
+                        </div>
+                    </div>
+
+                    <div class="form" ng-show="!firstPage && accountExists">
+                        <legend>Account Details</legend>
+                        <label>Name</label>
+                        <input type="text" ng-model="name" readonly="true">
+                        <label>Balance</label>
+                        <input type="text" ng-model="balance" readonly="true">
+                        <legend>Transaction</legend>
+                        <label>Amount</label>
+                        <input type="text" ng-model="transaction">
+                        <div class="form-actions">                        
+                            <span><input type="button" value="Deposit" ng-click="depositAccount()" class="btn btn-success" /></span>                      
+                            <span><input type="button" value="Withdraw" ng-click="withdrawAccount()" class="btn btn-danger"/></span>
+                            <span><input type="button" value="Exit" ng-click="exitAccount()" class="btn btn-primary"/></span>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label>Account Details</label>
+                        {{name}} {{balance}} {{accountExists}}
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="row-fluid">
+                <!-- footer -->
+                <em>Angular Resty 2015</em>
+            </div>
+        </div>
+    </body>
+</html>
+
+
+
+
+
