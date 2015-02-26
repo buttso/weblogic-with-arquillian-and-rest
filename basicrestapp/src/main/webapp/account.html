@@ -16,60 +16,59 @@
                 <!-- header -->
             </div>
 
-            <div class="row-fluid">
+            <div class="row-fluid" ng-controller="AccountController">
                 <!-- body -->
                 <h2>Welcome to the Angular Resty Bank</h2>
                 <p class="lead">This project is a basic example using REST and Angular JS to simulate an carrot system</p>
 
                 <!-- Angulars Away -->
-                <div class="well" ng-controller="AccountController">
+                <div class="well" >
 
                     <!-- FIRST PAGE -->
-                    <div id="firstPage" class="form" ng-show="firstPage">
+                    <div id="firstPage" class="form_firstpage" ng-show="firstPage">
                         <legend>Enter your name to get started</legend>
                         <label>Name</label>
-                        <input type="text" ng-model="name">
+                        <input type="text" id="name" ng-model="name" required="true" min="3">
                         <div class="form-actions">                        
-                            <span><input type="button" value="Go" class="btn btn-success" ng-click="checkAccountExists()" /></span>                      
+                            <span><input type="button" id="enter" value="Enter" class="btn btn-success" ng-click="checkAccountExists()" /></span>                      
                         </div>
                     </div>
 
                     <!-- CREATE PAGE -->
-                    <div id="create" class="form" ng-show="!firstPage && !accountExists">
+                    <div id="form_create" class="form" ng-show="!firstPage && !accountExists">
                         <legend>Create Account</legend>
                         <label>Name</label>
-                        <input type="text" ng-model="name">
+                        <input type="text" id="name" ng-model="name" required="true" min="3">
                         <label>Initial Balance</label>
-                        <input type="text" ng-model="transaction">
+                        <input type="number" id="transaction" ng-model="transaction" required="true" min="0">
                         <div class="form-actions">                        
-                            <span><input type="button" value="Create" ng-click="createAccount()" class="btn btn-success"/></span>
-                            <span><input type="button" value="Exit" ng-click="exitAccount()()" class="btn btn-primary"/></span>
+                            <span><input type="button" id="create" value="Create" ng-click="createAccount()" class="btn btn-success"/></span>
+                            <span><input type="button" id="exit" value="Exit" ng-click="exitAccount()()" class="btn btn-primary"/></span>
                         </div>
                     </div>
 
-                    <div class="form" ng-show="!firstPage && accountExists">
+                    <div class="form" id="form_transaction" ng-show="!firstPage && accountExists">
                         <legend>Account Details</legend>
                         <label>Name</label>
-                        <input type="text" ng-model="name" readonly="true">
+                        <input type="text" id="name" ng-model="name" readonly="true">
                         <label>Balance</label>
-                        <input type="text" ng-model="balance" readonly="true">
+                        <input type="text" id="balance" ng-model="balance" readonly="true">
                         <legend>Transaction</legend>
                         <label>Amount</label>
-                        <input type="text" ng-model="transaction">
+                        <input type="number" ng-model="transaction" required="true" min="1">
                         <div class="form-actions">                        
-                            <span><input type="button" value="Deposit" ng-click="depositAccount()" class="btn btn-success" /></span>                      
-                            <span><input type="button" value="Withdraw" ng-click="withdrawAccount()" class="btn btn-danger"/></span>
-                            <span><input type="button" value="Exit" ng-click="exitAccount()" class="btn btn-primary"/></span>
+                            <span><input type="button" id="deposit" value="Deposit" ng-click="depositAccount()" class="btn btn-success" /></span>                      
+                            <span><input type="button" id="withdraw" value="Withdraw" ng-click="withdrawAccount()" class="btn btn-danger"/></span>
+                            <span><input type="button" id="exit" value="Exit" ng-click="exitAccount()" class="btn btn-primary"/></span>
                         </div>
                     </div>
-
-                    <div class="well">
-                        <label>Account Details</label>
-                        {{name}} {{balance}} {{accountExists}}<br/>
-                        {{message}}
-                    </div>
-
                 </div>
+                <div class="well" style="background-color:white;">
+                    <label>Account Details</label>
+                    {{name}} {{balance}} {{accountExists}}<br/>
+                    <div><b>{{message}}</b></div>
+                </div>
+
             </div>
 
             <div class="row-fluid">

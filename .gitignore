@@ -20,3 +20,4 @@ release.properties
 ### NetBeans Gunk
 nb-configuration.xml
 nbactions.xml
+.netbeans_automatic_build
