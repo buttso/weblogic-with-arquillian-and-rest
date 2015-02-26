@@ -90,7 +90,7 @@ public class AccountServiceTest {
 
         Assert.assertEquals(200, response.getStatus());
         String data = response.readEntity(String.class);
-        Assert.assertTrue(data.contains("Sam") && data.contains("$100.00"));
+        Assert.assertTrue(data.contains("$100.00"));
     }
 
     @Test

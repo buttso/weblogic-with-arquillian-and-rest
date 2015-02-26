@@ -70,7 +70,8 @@ public class AccountService {
         }
         AccountBean account = new AccountBean(name, amount);
         accounts.put(name, account);
-        return Response.ok(account.getName() + " " + formatCurrency(account.getAmount())).build();
+//        return Response.ok(account.getName() + " " + formatCurrency(account.getAmount())).build();
+        return Response.ok(formatCurrency(account.getAmount())).build();
     }
 
     /**
@@ -132,7 +133,6 @@ public class AccountService {
         account.withdrawal(amount);
         return Response.ok(formatCurrency(account.getAmount())).build();
     }
-    
 
     private String formatCurrency(Float amount) {
         return NumberFormat.getCurrencyInstance().format(amount);

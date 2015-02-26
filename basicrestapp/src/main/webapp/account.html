@@ -19,7 +19,7 @@
             <div class="row-fluid">
                 <!-- body -->
                 <h2>Welcome to the Angular Resty Bank</h2>
-                <p class="lead">This project shows a basic example of using REST and Angular JS to simulate some functionality of a bank system</p>
+                <p class="lead">This project is a basic example using REST and Angular JS to simulate an carrot system</p>
 
                 <!-- Angulars Away -->
                 <div class="well" ng-controller="AccountController">
@@ -40,7 +40,7 @@
                         <label>Name</label>
                         <input type="text" ng-model="name">
                         <label>Initial Balance</label>
-                        <input type="text" ng-model="balance">
+                        <input type="text" ng-model="transaction">
                         <div class="form-actions">                        
                             <span><input type="button" value="Create" ng-click="createAccount()" class="btn btn-success"/></span>
                             <span><input type="button" value="Exit" ng-click="exitAccount()()" class="btn btn-primary"/></span>
@@ -63,9 +63,10 @@
                         </div>
                     </div>
 
-                    <div>
+                    <div class="well">
                         <label>Account Details</label>
-                        {{name}} {{balance}} {{accountExists}}
+                        {{name}} {{balance}} {{accountExists}}<br/>
+                        {{message}}
                     </div>
 
                 </div>
